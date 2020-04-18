@@ -3,9 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:icon="@drawable/superman"
+        android:title="Administrar"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/nuevomensaje"
-        android:icon="@drawable/ic_action_nuevomensaje"
+        android:icon="@drawable/nuevomensaje"
         android:title="Nueva sugerencia"
+        android:visible="true"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/cerrarsesion"
+        android:icon="@drawable/cerrarsesion"
+        android:title="Cerrar sesión"
         android:visible="true"
         app:showAsAction="always" />
 </menu>

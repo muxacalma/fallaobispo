@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#efefef"
     tools:context=".FormularioSugerencias">
 
     <ImageView
@@ -11,118 +12,155 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:alpha="0.5"
+        android:alpha="0.1"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/bg1" />
+        android:visibility="visible"
+        app:srcCompat="@drawable/bg2" />
 
-        <ScrollView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:clickable="true"
+            android:onClick="ocultarTeclado"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginTop="30dp">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Título"
+                android:textColorHint="#af000000"
+                app:boxBackgroundColor="@android:color/white"
+                app:boxBackgroundMode="filled"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="5dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:endIconMode="clear_text">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtTitulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardBackgroundColor="#af000000"
-                    app:cardCornerRadius="5dp">
+                    android:fontFamily="sans-serif-condensed-medium" />
 
-                    <LinearLayout
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="10dp"
+                        android:text="Tipo"
+                        android:textColor="@android:color/black"
+                        android:visibility="visible" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:checkedButton="@+id/observacion"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="match_parent"
+                        <RadioButton
+                            android:id="@+id/observacion"
+                            style="@style/Widget.MaterialComponents.CompoundButton.RadioButton"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
-                            android:padding="10dp"
-                            android:text="Título"
-                            android:textColor="@android:color/white" />
+                            android:fontFamily="sans-serif-condensed-medium"
+                            android:text="Observación" />
 
-                        <EditText
-                            android:id="@+id/inputTitulo"
-                            android:layout_width="match_parent"
+                        <RadioButton
+                            android:id="@+id/propuesta"
+                            style="@style/Widget.MaterialComponents.CompoundButton.RadioButton"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:ems="10"
-                            android:hint="Escribe aquí el título de la sugerencia"
-                            android:inputType="textPersonName"
-                            android:textColor="@android:color/white"
-                            android:textColorHint="#afffffff"
-                            android:textSize="14sp" />
-                    </LinearLayout>
+                            android:fontFamily="sans-serif-condensed-medium"
+                            android:text="Propuesta de mejora" />
 
-                </androidx.cardview.widget.CardView>
+                        <RadioButton
+                            android:id="@+id/peticion"
+                            style="@style/Widget.MaterialComponents.CompoundButton.RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-condensed-medium"
+                            android:text="Petición" />
+                    </RadioGroup>
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView3"
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Escribe tu sugerencia"
+                android:textColor="@android:color/black"
+                android:visibility="gone" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:hint="Escribe aquí tu sugerencia"
+                android:textColorHint="#af000000"
+                app:boxBackgroundColor="@android:color/white"
+                app:boxBackgroundMode="filled"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="5dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:endIconMode="none">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="Tipo"
-                    android:textColor="@android:color/black" />
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:minLines="2" />
 
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp">
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <RadioButton
-                        android:id="@+id/radioButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Observación" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="50dp"
+                android:fontFamily="sans-serif"
+                android:onClick="enviarSugerencia"
+                android:text="Enviar sugerencia" />
 
-                    <RadioButton
-                        android:id="@+id/radioButton2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Propuesta de mejora" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Petición" />
-                </RadioGroup>
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="Escribe tu sugerencia"
-                    android:textColor="@android:color/black" />
-
-                <EditText
-                    android:id="@+id/inputTitulo3"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="#eee"
-                    android:ems="10"
-                    android:gravity="top|left"
-                    android:inputType="textLongMessage"
-                    android:lines="5"
-                    android:singleLine="false"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

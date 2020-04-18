@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "978117375860",
+    "firebase_url": "https://falla-obispo.firebaseio.com",
+    "project_id": "falla-obispo",
+    "storage_bucket": "falla-obispo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978117375860:android:7f2dbd9b6de94bdd255e21",
+        "android_client_info": {
+          "package_name": "com.madugada.fallaobispo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978117375860-qnt5bl9hgssnb5dkpt15qie739k4qjob.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.madugada.fallaobispo",
+            "certificate_hash": "c6734729be66a8c609d68fad5ec7ab5677d06dac"
+          }
+        },
+        {
+          "client_id": "978117375860-liqsv1d9k4v2nr9oos0ci4edobg1vdtk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBbvWfzvscYRMsPvghBdAur9zkMcR_atE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978117375860-liqsv1d9k4v2nr9oos0ci4edobg1vdtk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
