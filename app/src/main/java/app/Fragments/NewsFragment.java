@@ -1,21 +1,15 @@
-package com.madugada.fallaobispo;
+package app.Fragments;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DividerItemDecoration;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.WindowManager;
-import android.webkit.WebView;
-import android.widget.RadioButton;
-import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -24,8 +18,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.madugada.fallaobispo.R;
+import com.madugada.fallaobispo.antiguo.Evento;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,61 +29,46 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+import app.Adapters.AdapterEventos;
 
-    private static final String URL_EVENTOS = "http://muxacalma.com/obispo/getEventos.php";
+public class NewsFragment extends Fragment {
+
+    private static final String URL_NOTICIAS = "http://muxacalma.com/obispo/getNoticias.php";
 
     ArrayList<Evento> eventos;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private TextView txtNombre;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_principal, menu);
-        return true;
+    public NewsFragment() {
+        // Required empty public constructor
+    }
+
+    public static NewsFragment newInstance(String param1, String param2) {
+        NewsFragment fragment = new NewsFragment();
+        return fragment;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        //Buzón de sugerencias
-        if (id == R.id.nuevomensaje) {
-            Intent intent = new Intent(MainActivity.this, FormularioSugerencias.class);
-            startActivity(intent);
-        }
-        else if (id == R.id.cerrarsesion){
-            GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN).signOut();
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        getWindow (). setFlags ( WindowManager . LayoutParams . FLAG_FULLSCREEN , WindowManager. LayoutParams . FLAG_FULLSCREEN );
-
-        txtNombre = findViewById(R.id.txtNombre);
-        txtNombre.setText(getIntent().getStringExtra("nombreUsuario") + "!");
-
-        recyclerView = findViewById(R.id.listaEventos);
-        layoutManager = new GridLayoutManager(this, 1);
-        recyclerView.setLayoutManager(layoutManager);
-
-         //recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-
-        getEventos();
     }
 
-    public void getEventos(){
-        RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EVENTOS,
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_news, container, false);
+        recyclerView = view.findViewById(R.id.listaNoticias);
+        layoutManager = new GridLayoutManager(getContext(), 1);
+        recyclerView.setLayoutManager(layoutManager);
+        getNoticias();
+        return view;
+    }
+
+    public void getNoticias(){
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_NOTICIAS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -111,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                                     eventos.add(evento);
                                 }
                                 Log.d("Conteo eventos" , "Hay " + eventos.size() + " eventos.");
-                                mAdapter = new AdapterEventos(MainActivity.this, eventos);
+                                mAdapter = new AdapterEventos(getContext(), eventos);
                                 recyclerView.setAdapter(mAdapter);
 
                             }

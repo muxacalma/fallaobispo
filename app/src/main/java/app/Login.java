@@ -1,4 +1,4 @@
-package com.madugada.fallaobispo;
+package app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+import android.view.WindowManager;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -24,15 +24,12 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.madugada.fallaobispo.R;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private static final String URL_USUARIO_AUTORIZADO = "http://muxacalma.com/obispo/usuarioAutorizado.php";
 
@@ -42,6 +39,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getWindow (). setFlags ( WindowManager. LayoutParams . FLAG_FULLSCREEN , WindowManager. LayoutParams . FLAG_FULLSCREEN );
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -126,13 +124,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onResponse(String response) {
                         Log.d("Usuario Autorizado", response);
                         if(response.equals("SI")){
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            Intent intent = new Intent(Login.this, Dashboard.class);
                             intent.putExtra("nombreUsuario", account.getGivenName());
                             startActivity(intent);
                             finish();
                         }
                         else if(response.equals("NO")){
-                            GoogleSignIn.getClient(LoginActivity.this, GoogleSignInOptions.DEFAULT_SIGN_IN).signOut();
+                            GoogleSignIn.getClient(Login.this, GoogleSignInOptions.DEFAULT_SIGN_IN).signOut();
                             muestraAlert("Cuenta no autorizada", "Esta cuenta no ha sido dada de alta para poder acceder a la aplicación.\n\n" +
                                     "Por favor, ponte en contacto con los administradores de la app para solucionarlo.");
                         }

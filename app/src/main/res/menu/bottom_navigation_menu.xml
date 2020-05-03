@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemEventos"
+        android:icon="@drawable/eventos_no_elegido"
+        android:title="Eventos"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemFalla"
+        android:icon="@drawable/falla_no_elegido"
+        android:title="Nuestra falla"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemNoticias"
+        android:icon="@drawable/noticias_no_elegido"
+        android:title="Noticias"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemCompeticiones"
+        android:icon="@drawable/competiciones_no_elegido"
+        android:title="Competiciones"
+        app:showAsAction="always" />
+</menu>

@@ -1,41 +1,24 @@
-package com.madugada.fallaobispo;
+package app.Adapters;
 
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.LottieAnimationView;
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.material.card.MaterialCardView;
+import com.madugada.fallaobispo.R;
+import com.madugada.fallaobispo.antiguo.Evento;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHolder> {
 
@@ -52,7 +35,7 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
     @NonNull
     @Override
     public AdapterEventos.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.evento, null, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_evento, null, false);
         return new AdapterEventos.MyViewHolder(v, activity);
     }
 

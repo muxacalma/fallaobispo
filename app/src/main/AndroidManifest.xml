@@ -12,16 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DashboardAdministrador"></activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name="app.Dashboard"></activity>
+        <activity
+            android:name=".antiguo.ListaEmails"
+            android:label="@string/title_activity_lista_emails"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".antiguo.DashboardAdministrador" />
+        <activity android:name="app.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FormularioSugerencias" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".antiguo.FormularioSugerencias" />
+        <activity android:name=".antiguo.MainActivity" />
     </application>
 
 </manifest>

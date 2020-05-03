@@ -3,12 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/administradores"
         android:icon="@drawable/superman"
         android:title="Administrar"
         app:showAsAction="always" />
     <item
         android:id="@+id/nuevomensaje"
-        android:icon="@drawable/nuevomensaje"
+        android:icon="@drawable/ic_action_nuevomensaje"
         android:title="Nueva sugerencia"
         android:visible="true"
         app:showAsAction="always" />

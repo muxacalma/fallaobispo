@@ -4,22 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#efefef"
-    tools:context=".FormularioSugerencias">
+    tools:context=".antiguo.FormularioSugerencias">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:alpha="0.1"
-        android:scaleType="centerCrop"
-        android:visibility="visible"
-        app:srcCompat="@drawable/bg2" />
+        android:layout_height="?attr/actionBarSize"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar3">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +46,7 @@
                     android:id="@+id/txtTitulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed-medium" />
+                    android:fontFamily="sans-serif" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,7 +66,7 @@
                         android:id="@+id/textView3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed-medium"
+                        android:fontFamily="sans-serif"
                         android:padding="10dp"
                         android:text="Tipo"
                         android:textColor="@android:color/black"
@@ -90,7 +87,7 @@
                             style="@style/Widget.MaterialComponents.CompoundButton.RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
+                            android:fontFamily="sans-serif"
                             android:text="Observación" />
 
                         <RadioButton
@@ -98,7 +95,7 @@
                             style="@style/Widget.MaterialComponents.CompoundButton.RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
+                            android:fontFamily="sans-serif"
                             android:text="Propuesta de mejora" />
 
                         <RadioButton
@@ -106,7 +103,7 @@
                             style="@style/Widget.MaterialComponents.CompoundButton.RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
+                            android:fontFamily="sans-serif"
                             android:text="Petición" />
                     </RadioGroup>
                 </LinearLayout>
@@ -117,7 +114,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:fontFamily="sans-serif"
                 android:padding="10dp"
                 android:text="Escribe tu sugerencia"
                 android:textColor="@android:color/black"
@@ -143,7 +140,7 @@
                     android:id="@+id/txtDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed-medium"
+                    android:fontFamily="sans-serif"
                     android:minLines="2" />
 
             </com.google.android.material.textfield.TextInputLayout>

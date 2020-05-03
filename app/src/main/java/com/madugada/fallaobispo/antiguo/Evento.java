@@ -1,4 +1,4 @@
-package com.madugada.fallaobispo;
+package com.madugada.fallaobispo.antiguo;
 
 public class Evento {
 
