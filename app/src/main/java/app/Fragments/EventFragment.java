@@ -20,7 +20,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.madugada.fallaobispo.R;
 import app.Adapters.AdapterEventos;
-import com.madugada.fallaobispo.antiguo.Evento;
+import app.Objetos.Evento;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -66,7 +66,6 @@ public class EventFragment extends Fragment {
         return view;
     }
 
-
     public void getEventos(){
         RequestQueue queue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EVENTOS,
@@ -91,9 +90,8 @@ public class EventFragment extends Fragment {
                                     eventos.add(evento);
                                 }
                                 Log.d("Conteo eventos" , "Hay " + eventos.size() + " eventos.");
-                                mAdapter = new AdapterEventos(getContext(), eventos);
+                                mAdapter = new AdapterEventos(getContext(), eventos, getActivity());
                                 recyclerView.setAdapter(mAdapter);
-
                             }
                         }
                         catch (JSONException e){
@@ -117,7 +115,6 @@ public class EventFragment extends Fragment {
                 Map<String, String> params = new HashMap<String, String>();
                 return params;
             }
-
         };
         queue.add(stringRequest);
     }

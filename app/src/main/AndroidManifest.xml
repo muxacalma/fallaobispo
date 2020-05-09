@@ -12,13 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="app.Dashboard"></activity>
+        <activity
+            android:name="app.Activities.PublicarNoticia"
+            android:label="@string/title_activity_publicar_noticia"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="app.Activities.DetalleEvento"
+            android:label="@string/title_activity_detalle_evento"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="app.Activities.DetalleNoticia"
+            android:label="@string/title_activity_detalle_noticia"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="app.Activities.Dashboard" />
         <activity
             android:name=".antiguo.ListaEmails"
             android:label="@string/title_activity_lista_emails"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".antiguo.DashboardAdministrador" />
-        <activity android:name="app.Login">
+        <activity android:name="app.Activities.DashboardAdministrador" />
+        <activity android:name="app.Activities.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -33,8 +33,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import app.Activities.DashboardAdministrador;
 import app.Adapters.AdapterEventos;
-import app.Login;
+import app.Activities.Login;
+import app.Objetos.Evento;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
          //recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
-        getEventos();
+        //getEventos();
     }
 
     public void getEventos(){
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                                     eventos.add(evento);
                                 }
                                 Log.d("Conteo eventos" , "Hay " + eventos.size() + " eventos.");
-                                mAdapter = new AdapterEventos(MainActivity.this, eventos);
+                                mAdapter = new AdapterEventos(MainActivity.this, eventos, MainActivity.this);
                                 recyclerView.setAdapter(mAdapter);
 
                             }

@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">Falla Obispo</string>
+    <string name="instruccionesNuevaNoticia">
+        "En esta sección es donde puedes publicar las noticias que aparecen en la aplicación.\n\n"
+
+        "Rellena los campos con atención. Cuando termines podrás ver una vista previa antes de publicar la noticia."
+    </string>
+
+
+
+
+
+
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -104,4 +115,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_detalle_noticia">DetalleNoticia</string>
+    <string name="title_activity_detalle_evento">DetalleEvento</string>
+    <string name="title_activity_publicar_noticia">PublicarNoticia</string>
 </resources>

@@ -5,11 +5,13 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.Explode;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -19,7 +21,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.madugada.fallaobispo.R;
-import com.madugada.fallaobispo.antiguo.Evento;
+
+import app.Adapters.AdapterNoticias;
+import app.Objetos.Evento;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,12 +34,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.Adapters.AdapterEventos;
+import app.Objetos.Noticia;
 
 public class NewsFragment extends Fragment {
 
     private static final String URL_NOTICIAS = "http://muxacalma.com/obispo/getNoticias.php";
 
-    ArrayList<Evento> eventos;
+    ArrayList<Noticia> noticias;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -74,25 +79,24 @@ public class NewsFragment extends Fragment {
                     public void onResponse(String response) {
                         Log.d("Eventos recuperados", response);
                         try{
-                            eventos = new ArrayList<>();
+                            noticias = new ArrayList<>();
                             JSONArray jsonArray = new JSONArray(response);
                             if(jsonArray.length() > 0){
                                 for(int i=0; i<jsonArray.length(); i++){
                                     JSONObject actual = jsonArray.getJSONObject(i);
                                     int id = actual.getInt("id");
                                     String titulo = actual.getString("titulo");
-                                    String ruta_imagen = actual.getString("ruta_foto");
+                                    String ruta_imagen = actual.getString("rutaImagen");
                                     String descripcion = actual.getString("descripcion");
                                     String fecha = actual.getString("fecha");
-                                    boolean hayInscripcion = Boolean.valueOf(actual.getString("hayInscripcion"));
 
-                                    Evento evento = new Evento(id, titulo, ruta_imagen, descripcion, fecha, hayInscripcion);
-                                    eventos.add(evento);
+                                    Noticia noticia = new Noticia(id, titulo, descripcion, ruta_imagen, fecha);
+
+                                    noticias.add(noticia);
                                 }
-                                Log.d("Conteo eventos" , "Hay " + eventos.size() + " eventos.");
-                                mAdapter = new AdapterEventos(getContext(), eventos);
+                                Log.d("Conteo eventos" , "Hay " + noticias.size() + " noticias.");
+                                mAdapter = new AdapterNoticias(getContext(), noticias, getActivity());
                                 recyclerView.setAdapter(mAdapter);
-
                             }
                         }
                         catch (JSONException e){
@@ -102,7 +106,7 @@ public class NewsFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d(" ERROR Eventos:", error.toString());
+                Log.d(" ERROR Noticias:", error.toString());
             }
         }) {
             @Override
@@ -116,7 +120,6 @@ public class NewsFragment extends Fragment {
                 Map<String, String> params = new HashMap<String, String>();
                 return params;
             }
-
         };
         queue.add(stringRequest);
     }
