@@ -2,8 +2,10 @@ package app.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +26,11 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.madugada.fallaobispo.R;
+import com.khaledonioscousin.mifalla.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -123,16 +129,34 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onResponse(String response) {
                         Log.d("Usuario Autorizado", response);
-                        if(response.equals("SI")){
-                            Intent intent = new Intent(Login.this, Dashboard.class);
-                            intent.putExtra("nombreUsuario", account.getGivenName());
-                            startActivity(intent);
-                            finish();
-                        }
-                        else if(response.equals("NO")){
+                        if(response.equals("NO")){
                             GoogleSignIn.getClient(Login.this, GoogleSignInOptions.DEFAULT_SIGN_IN).signOut();
                             muestraAlert("Cuenta no autorizada", "Esta cuenta no ha sido dada de alta para poder acceder a la aplicación.\n\n" +
                                     "Por favor, ponte en contacto con los administradores de la app para solucionarlo.");
+                        }
+                        else{
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                String email = jsonObject.getString("email");
+                                String nombreSimple = jsonObject.getString("nombre_simple");
+                                String nombreCompleto = jsonObject.getString("nombre_completo");
+                                int esAdmin = jsonObject.getInt("esAdmin");
+                                SharedPreferences.Editor editor = getSharedPreferences("miFallaPreferences", MODE_PRIVATE).edit();
+                                editor.putString("email", email);
+                                editor.putString("nombreSimple", nombreSimple);
+                                editor.putString("nombreCompleto", nombreCompleto);
+                                editor.putInt("esAdmin", esAdmin);
+                                editor.apply();
+
+                                Intent intent = new Intent(Login.this, Dashboard.class);
+                                intent.putExtra("nombreUsuario", account.getGivenName());
+                                startActivity(intent);
+                                finish();
+                            }
+                            catch (JSONException e){
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -151,6 +175,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("email", account.getEmail());
+                params.put("nombreSimple", account.getGivenName());
+                params.put("nombreCompleto", account.getDisplayName());
                 return params;
             }
 
