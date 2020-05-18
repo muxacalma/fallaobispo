@@ -2,14 +2,19 @@ package app.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.VideoView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -65,6 +70,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setOnClickListener(this);
+
     }
 
     public void updateUI(GoogleSignInAccount account){
@@ -111,12 +117,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
-            // Signed in successfully, show authenticated UI.
             updateUI(account);
         } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.w("Error HANDLE RESULT", "signInResult:failed code=" + e.getStatusCode());
             updateUI(null);
         }
@@ -179,7 +181,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 params.put("nombreCompleto", account.getDisplayName());
                 return params;
             }
-
         };
         queue.add(stringRequest);
     }

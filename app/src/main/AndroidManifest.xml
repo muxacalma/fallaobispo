@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.madugada.fallaobispo">
+    package="com.khaledonioscousin.mifalla">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,9 +14,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name="app.Activities.Cargos"
+            android:label="@string/title_activity_cargos"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="app.Activities.PublicarEvento"
+            android:label="@string/title_activity_publicar_evento"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="app.Activities.GestionUsuario" />
+        <activity
             android:name="app.Activities.PublicarNoticia"
             android:label="@string/title_activity_publicar_noticia"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="app.Activities.DetalleEvento"
             android:label="@string/title_activity_detalle_evento"
@@ -26,7 +36,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="app.Activities.Dashboard" />
         <activity
-            android:name=".antiguo.ListaEmails"
+            android:name="app.Activities.ListaEmails"
             android:label="@string/title_activity_lista_emails"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="app.Activities.DashboardAdministrador" />

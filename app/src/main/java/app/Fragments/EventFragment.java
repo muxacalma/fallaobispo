@@ -1,5 +1,6 @@
 package app.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,7 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.madugada.fallaobispo.R;
+import com.khaledonioscousin.mifalla.R;
 import app.Adapters.AdapterEventos;
 import app.Objetos.Evento;
 
@@ -54,6 +55,12 @@ public class EventFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        getEventos();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -61,7 +68,7 @@ public class EventFragment extends Fragment {
         recyclerView = view.findViewById(R.id.listaEventos);
         layoutManager = new GridLayoutManager(getContext(), 1);
         recyclerView.setLayoutManager(layoutManager);
-        getEventos();
+        //getEventos();
 
         return view;
     }
@@ -84,9 +91,24 @@ public class EventFragment extends Fragment {
                                     String ruta_imagen = actual.getString("ruta_foto");
                                     String descripcion = actual.getString("descripcion");
                                     String fecha = actual.getString("fecha");
-                                    boolean hayInscripcion = Boolean.valueOf(actual.getString("hayInscripcion"));
+                                    String hora = actual.getString("hora");
+                                    String precio = actual.getString("precio");
+                                    String hayInscripcion = actual.getString("hayInscripcion");
+                                    boolean esPublico = Boolean.valueOf(actual.getString("esPublico"));
+                                    String valoracionMedia = actual.getString("valoracionMedia");
+                                    float valoracionM;
+                                    if(valoracionMedia.equals("null"))
+                                        valoracionM = 0;
+                                    else
+                                        valoracionM = Float.parseFloat(actual.getString("valoracionMedia"));
+                                    String valoracionUsuario = actual.getString("valoracionUsuario");
+                                    float valoracionU;
+                                    if(valoracionUsuario.equals("null"))
+                                        valoracionU = 0;
+                                    else
+                                        valoracionU = Float.parseFloat(actual.getString("valoracionUsuario"));
 
-                                    Evento evento = new Evento(id, titulo, ruta_imagen, descripcion, fecha, hayInscripcion);
+                                    Evento evento = new Evento(id, titulo, ruta_imagen, descripcion, fecha, hayInscripcion, hora, precio, esPublico, valoracionM, valoracionU);
                                     eventos.add(evento);
                                 }
                                 Log.d("Conteo eventos" , "Hay " + eventos.size() + " eventos.");
@@ -113,6 +135,7 @@ public class EventFragment extends Fragment {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("email", getContext().getSharedPreferences("miFallaPreferences", Context.MODE_PRIVATE).getString("email", "-"));
                 return params;
             }
         };

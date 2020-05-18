@@ -32,4 +32,10 @@ public class Noticia {
     public String getFecha() {
         return fecha;
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
 }

@@ -2,8 +2,11 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollNoticia"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="app.Activities.PublicarNoticia"
     tools:showIn="@layout/activity_publicar_noticia">
@@ -11,6 +14,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="ocultarTeclado"
         android:orientation="vertical">
 
         <com.google.android.material.card.MaterialCardView
@@ -53,10 +58,10 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:padding="10dp"
-            app:cardElevation="5dp"
             app:cardBackgroundColor="#fafafa"
-            android:layout_margin="10dp">
+            app:cardElevation="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,47 +71,122 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="10dp"
                     android:text="Titulo de la noticia"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
-                    android:padding="10dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputTitulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="3"
-                    android:maxLength="140"/>
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:maxLength="140"
+                    android:maxLines="3" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="10dp"
                     android:text="Escribe aquí la noticia"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
-                    android:padding="10dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLength="1500"/>
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:maxLength="1500" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="10dp"
                     android:text="Imagen de la noticia"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
-                    android:padding="10dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
-                <com.google.android.material.button.MaterialButton
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Añadir imagen de cabecera de noticia"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:padding="10dp"
+                    app:cardCornerRadius="5dp">
+
+                    <ImageButton
+                        android:id="@+id/imagenNoticia"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent"
+                        android:onClick="anadirFotoGaleria"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/incluirimagen" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/txtCambioImagen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Puedes cambiar la imagen volviendo a pulsar sobre ella"
+                    android:textAlignment="center"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/privacidadNoticia"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:checked="false"
+                    android:padding="10dp"
+                    android:text="Noticia Privada (sólo miembros de la falla)"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVistaPrevia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_orange_dark"
+                android:onClick="vistaPrevia"
+                android:text="Vista previa" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEnviarNoticia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#4CAF50"
+                android:onClick="publicarNoticia"
+                android:text="Publicar noticia"
+                android:visibility="visible" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

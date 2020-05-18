@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.Activities.GestionUsuario"
+    android:onClick="ocultarTeclado"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:onClick="ocultarTeclado"
+        android:clickable="true">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar5"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar5"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:onClick="ocultarTeclado"
+                    android:clickable="true">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:hint="Email"
+                        android:textColorHint="#af000000"
+                        app:boxBackgroundColor="@android:color/white"
+                        app:boxBackgroundMode="filled"
+                        app:boxCornerRadiusBottomEnd="5dp"
+                        app:boxCornerRadiusBottomStart="5dp"
+                        app:boxCornerRadiusTopEnd="5dp"
+                        app:boxCornerRadiusTopStart="5dp"
+                        app:boxStrokeColor="@color/colorPrimary"
+                        app:endIconMode="clear_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:inputType="textEmailAddress" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/esAdministrador"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="¿Es administrador?" />
+
+                    <LinearLayout
+                        android:id="@+id/layoutPermisos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="2dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="2dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="vertical">
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/swCrearEventos"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:checked="false"
+                                    android:text="¿Puede crear eventos?" />
+
+                                <View
+                                    android:id="@+id/view4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@android:color/black" />
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/swEliminarEventos"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:checked="false"
+                                    android:text="¿Puede eliminar eventos?" />
+
+                                <View
+                                    android:id="@+id/view5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@android:color/black" />
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/swPublicarNoticias"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:checked="false"
+                                    android:text="¿Puede publicar noticias?" />
+
+                                <View
+                                    android:id="@+id/view6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@android:color/black" />
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/swEliminarNoticias"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:checked="false"
+                                    android:text="¿Puede eliminar noticias?" />
+
+                                <View
+                                    android:id="@+id/view7"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@android:color/black" />
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/swCrearTorneos"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:checked="false"
+                                    android:text="¿Puede crear torneos?" />
+
+                                <View
+                                    android:id="@+id/view8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@android:color/black" />
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/swEliminarTorneos"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:checked="false"
+                                    android:text="¿Puede eliminar torneos?" />
+
+                                <View
+                                    android:id="@+id/view9"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@android:color/black" />
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/swGestionarUsuarios"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:checked="false"
+                                    android:text="¿Puede gestionar usuarios?" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="-5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Esta opción sólo debería activarse para administradores totales, ya que se pueden añadir usuarios con todos los permisos."
+                                    android:textColor="@android:color/holo_red_dark"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCrearUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:padding="5dp"
+            android:text="Crear usuario"
+            android:onClick="crearUsuario"/>
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

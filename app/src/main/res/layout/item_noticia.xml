@@ -39,7 +39,7 @@
                     android:transitionName="imagenNoticia"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/bg2" />
+                    android:maxHeight="250dp"/>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -63,6 +63,7 @@
                         android:layout_gravity="center"
                         android:background="@android:color/white"
                         android:fontFamily="sans-serif-condensed-medium"
+                        android:transitionName="tituloNoticia"
                         android:paddingTop="10dp"
                         android:paddingRight="10dp"
                         android:paddingBottom="10dp"

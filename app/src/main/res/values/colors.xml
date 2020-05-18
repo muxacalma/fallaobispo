@@ -9,4 +9,10 @@
     <color name="colorSecondaryLight">#5472d3</color>
 
     <color name="colorAccent">#0d47a1</color>
+    <color name="verdeOK">#FF4CAF50</color>
+
+    <color name="amarilloSuave">#FFF176</color>
+    <color name="rojoSuave">#FFE57373</color>
+    <color name="azulSuave">#4FC3F7</color>
+
 </resources>

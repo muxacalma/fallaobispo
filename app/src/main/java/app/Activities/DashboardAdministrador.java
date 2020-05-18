@@ -9,8 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.madugada.fallaobispo.R;
-import com.madugada.fallaobispo.antiguo.ListaEmails;
+import com.khaledonioscousin.mifalla.R;
 
 public class DashboardAdministrador extends AppCompatActivity {
 
@@ -43,6 +42,11 @@ public class DashboardAdministrador extends AppCompatActivity {
 
     public void abrirPublicarNoticia(View view){
         Intent i = new Intent(DashboardAdministrador.this, PublicarNoticia.class);
+        startActivity(i);
+    }
+
+    public void abrirCrearEvento(View view){
+        Intent i = new Intent(DashboardAdministrador.this, PublicarEvento.class);
         startActivity(i);
     }
 }

@@ -51,13 +51,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:padding="20dp"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="8dp">
@@ -65,37 +65,43 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="#38D6E8EA"
                         android:padding="20dp"
-                        android:text="Cuándo"
+                        android:text="Fecha"
                         android:textAlignment="center"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtFecha"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/text_margin"
-                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:text="27/05/2020"
+                        android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
+
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:padding="20dp"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="8dp">
@@ -103,28 +109,76 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#38D6E8EA"
+                        android:padding="20dp"
+                        android:text="Horario"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtHora"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="A partir de las 20:00"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:padding="20dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="#38D6E8EA"
                         android:padding="20dp"
                         android:text="Precio"
                         android:textAlignment="center"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtPrecio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/text_margin"
-                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:text="5€"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/black" />
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -140,10 +194,9 @@
             android:layout_gravity="center">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -172,14 +225,40 @@
                     android:layout_margin="10dp"/>
 
                 <Button
+                    android:id="@+id/btnValorarEvento"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Enviar valoración"/>
+                    android:text="Enviar valoración"
+                    android:textAllCaps="false"
+                    android:onClick="valorarEvento"/>
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmarAsistencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirmar asistencia"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/verdeOK"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEliminarEvento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Borrar evento"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:layout_margin="20dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:onClick="eliminarEvento"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"/>
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

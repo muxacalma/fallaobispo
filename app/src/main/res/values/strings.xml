@@ -1,14 +1,15 @@
 <resources>
-    <string name="app_name">Falla Obispo</string>
+    <string name="app_name">Mi falla</string>
     <string name="instruccionesNuevaNoticia">
         "En esta sección es donde puedes publicar las noticias que aparecen en la aplicación.\n\n"
 
         "Rellena los campos con atención. Cuando termines podrás ver una vista previa antes de publicar la noticia."
     </string>
+    <string name="instruccionesNuevoEvento">
+        "En esta sección es donde puedes los eventos que aparecen en la aplicación.\n\n"
 
-
-
-
+        "Rellena los campos con atención. Cuando termines podrás ver una vista previa antes de publicar el evento."
+    </string>
 
 
     <string name="title_activity_scrolling">ScrollingActivity</string>
@@ -118,4 +119,6 @@
     <string name="title_activity_detalle_noticia">DetalleNoticia</string>
     <string name="title_activity_detalle_evento">DetalleEvento</string>
     <string name="title_activity_publicar_noticia">PublicarNoticia</string>
+    <string name="title_activity_publicar_evento">PublicarEvento</string>
+    <string name="title_activity_cargos">Cargos</string>
 </resources>
