@@ -14,9 +14,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name="app.Activities.Tarifas"
+            android:label="@string/title_activity_tarifas"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name="app.Activities.Cargos"
             android:label="@string/title_activity_cargos"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="app.Activities.PublicarEvento"
             android:label="@string/title_activity_publicar_evento"

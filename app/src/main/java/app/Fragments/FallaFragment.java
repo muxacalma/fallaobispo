@@ -14,10 +14,11 @@ import com.google.android.material.snackbar.Snackbar;
 import com.khaledonioscousin.mifalla.R;
 
 import app.Activities.Cargos;
+import app.Activities.Tarifas;
 
 public class FallaFragment extends Fragment {
 
-    MaterialCardView cardHistoria, cardMonumento, cardCargos;
+    MaterialCardView cardHistoria, cardMonumento, cardCargos, cardTarifas;
 
     public FallaFragment() {
         // Required empty public constructor
@@ -41,10 +42,17 @@ public class FallaFragment extends Fragment {
         cardHistoria = view.findViewById(R.id.cardHistoria);
         cardMonumento = view.findViewById(R.id.cardMonumento);
         cardCargos = view.findViewById(R.id.cardCargos);
+        cardTarifas = view.findViewById(R.id.cardTarifas);
         cardCargos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 abrirCargos();
+            }
+        });
+        cardTarifas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirTarifas();
             }
         });
         cardHistoria.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +72,11 @@ public class FallaFragment extends Fragment {
 
     public void abrirCargos(){
         Intent intent = new Intent(getContext(), Cargos.class);
+        startActivity(intent);
+    }
+
+    public void abrirTarifas(){
+        Intent intent = new Intent(getContext(), Tarifas.class);
         startActivity(intent);
     }
 
